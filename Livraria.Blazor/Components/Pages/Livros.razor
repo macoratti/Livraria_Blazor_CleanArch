@@ -1,0 +1,30 @@
+﻿@page "/livros"
+@attribute [StreamRendering]
+
+<h3>Catálogo</h3>
+
+<p>
+    <a href="/novolivro">Criar Novo Livro</a>
+</p>
+@if (livros is null)
+{
+   <img src="/images/loading.gif" width="100" height="100" />
+}
+else
+{
+    <div class="row">
+        @foreach (var livro in livros)
+        {
+            <LivrosCard Livro="@livro" />
+        }
+    </div>
+}
+
+@code {
+    IEnumerable<Livro>? livros;
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(800);
+        livros = await livroRepository.ObterLivros();
+    }
+} 

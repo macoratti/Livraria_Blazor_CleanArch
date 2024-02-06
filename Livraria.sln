@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Domain", "Livraria.Domain\Livraria.Domain.csproj", "{18B8C228-5720-44DE-8B7D-7BA330BAAA9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livraria.Domain", "Livraria.Domain\Livraria.Domain.csproj", "{18B8C228-5720-44DE-8B7D-7BA330BAAA9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Application", "Livraria.Application\Livraria.Application.csproj", "{877647A6-DD8B-454E-B4D6-A052C1D5F7C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livraria.Application", "Livraria.Application\Livraria.Application.csproj", "{877647A6-DD8B-454E-B4D6-A052C1D5F7C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Infrastructure", "Livraria.Infrastructure\Livraria.Infrastructure.csproj", "{C4A0C657-0B68-4FC9-915B-69541388874C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livraria.Infrastructure", "Livraria.Infrastructure\Livraria.Infrastructure.csproj", "{C4A0C657-0B68-4FC9-915B-69541388874C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.CrossCutting", "Livraria.CrossCutting\Livraria.CrossCutting.csproj", "{62DF7B8C-836D-4D20-AB23-901D6BC7977F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livraria.CrossCutting", "Livraria.CrossCutting\Livraria.CrossCutting.csproj", "{62DF7B8C-836D-4D20-AB23-901D6BC7977F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Livraria.Blazor", "Livraria.Blazor\Livraria.Blazor.csproj", "{499AE39B-FCA2-4D51-AF07-1E9AC7018C9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Livraria.Blazor", "Livraria.Blazor\Livraria.Blazor.csproj", "{499AE39B-FCA2-4D51-AF07-1E9AC7018C9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

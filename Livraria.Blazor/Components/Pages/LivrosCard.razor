@@ -1,0 +1,19 @@
+﻿<div class="col-md-3 mb-3">
+    <div class="card custom-card">
+        <img src="/images/@livro.Capa" class="card-img-top custom-card-img" alt="Capa">
+        <div class="card-body">
+            <h5 class="card-title">@livro.Titulo</h5>
+            <p class="card-text">@livro.Autor</p>
+            <p class="cart-text">@livro.Editora</p>
+            <p class="card-text">Lançamento: @livro.Lancamento.ToShortDateString()</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <a href='/editalivro/@livro.LivroId' class="btn btn-primary">Editar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public required Livro livro { get; set; }
+}
