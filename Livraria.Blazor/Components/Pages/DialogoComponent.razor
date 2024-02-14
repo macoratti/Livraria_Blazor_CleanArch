@@ -1,0 +1,26 @@
+﻿@if (Exibir)
+{
+    <div class="confirm-dialog-container">
+        <div class="confirm-dialog">
+            @ChildContent
+            <div class="d-flex flex-row justify-content-end mt-5">
+                <button @onclick="OnCancel" class="btn btn-primary">Cancelar </button>
+                <button @onclick="OnDelete" class="btn btn-danger">Deletar </button>
+            </div>
+        </div>
+    </div>
+}
+@code {
+    [Parameter]
+    public bool Exibir { get; set; }
+
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+
+    [Parameter]
+    public EventCallback OnDelete { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+}

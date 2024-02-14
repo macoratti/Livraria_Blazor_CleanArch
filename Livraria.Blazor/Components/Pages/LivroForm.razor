@@ -1,0 +1,103 @@
+﻿@if(Livro is not null)
+{
+    <EditForm Enhance="true" method="post" FormName="LivroForm" OnValidSubmit="EditaAdicionaLivro"
+         Model="Livro" id="EditaAdicionaLivro">
+
+        <h3>@Cabecalho</h3>
+
+        @if (ModoEdicao)
+        {
+            <input type="hidden" name="Livro.LivroId" value="@Livro.LivroId" />
+        }
+
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo</label>
+            <InputText id="titulo" @bind-Value="Livro.Titulo" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="autor" class="form-label">Autor</label>
+            <InputText id="autor" @bind-Value="Livro.Autor" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="lancamento" class="form-label">Lancamento</label>
+            <InputDate id="lancamento" @bind-Value="Livro.Lancamento" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="editora" class="form-label">Editora</label>
+            <InputSelect id="editora" @bind-Value="Livro.Editora" class="form-control">
+                <option value="0">
+                    Selecione a Editora
+                </option>
+                @foreach (var editora in Enum.GetValues(typeof(Editora)))
+                {
+                    <option value="@editora">
+                        @editora.ToString()
+                    </option>
+                }
+            </InputSelect>
+        </div>
+        <div class="mb-3">
+            <label for="capa" class="form-label">Capa</label>
+            <InputText id="capa" @bind-Value="Livro.Capa" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria</label>
+            <InputSelect id="categoria" @bind-Value="Livro.Categoria" class="form-control">
+                <option value="0">
+                    Selecione a Categoria
+                </option>
+                @foreach (var categoria in Enum.GetValues(typeof(Categoria)))
+                {
+                    <option value="@categoria">
+                        @categoria.ToString()
+                    </option>
+                }
+            </InputSelect>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">
+                Enviar
+            </button>
+            <a href="/livros" class="btn btn-secondary ms-3" data-enhance-nav="false">
+                Retornar para livros
+            </a>
+        </div>
+
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+   </EditForm>
+}
+
+
+@code {
+    [Parameter]
+    public bool ModoEdicao { get; set; } = false;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    //informar o componente Pai que o Form foi enviado
+    public EventCallback<Livro> OnValidaLivroSubmit { get; set; }
+
+    [SupplyParameterFromForm(FormName = "LivroForm")]
+    public Livro? Livro { get; set; }
+
+    private string Cabecalho => ModoEdicao ? $"Editar Livro {Id}" : "Novo Livro";
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (ModoEdicao)
+            Livro ??= await livroRepository.ObterLivro(Id);
+        else
+            Livro ??= new Livro(0, null, null, DateTime.Now, null, Editora.Nenhuma, Categoria.Nenhuma);
+    }
+
+    private async Task EditaAdicionaLivro()
+    {
+        await OnValidaLivroSubmit.InvokeAsync(Livro);
+    }
+
+}
